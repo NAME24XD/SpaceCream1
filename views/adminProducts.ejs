@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            margin-top: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], textarea, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            color: #45a049;
+        }
+
+        .product-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Админ-Панель</h1>
+    <% if (cornerLetter === 'A') { %>
+        <div style="position: fixed; top: 10px; right: 10px; font-size: 24px;">A</div>
+    <% } %>
+    <div class="product-form">
+        <h2>Добавить новый комплектующий:</h2>
+        <form method="post" action="/add" enctype="multipart/form-data">
+            <label for="name">Название:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description" required></textarea><br>
+            <label for="price">Цена:</label>
+            <input type="number" id="price" name="price" step="0.01" required><br>
+            <label>Изображение:</label>
+            <input type="file" name="image" accept="image/*" required />
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    
+    <h2>Список комплектующих</h2>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <strong><%= product.name %></strong>: <%= product.description %> - <%= product.price %>
+                <div class="product-form">
+                    <form action="/admin/products/update/<%= product.id %>" method="POST">
+                        <label for="name">Название:</label>
+                        <input type="text" id="name" name="name" value="<%= product.name %>">
+                        <label for="description">Описание:</label>
+                        <input type="text" id="description" name="description" value="<%= product.description %>">
+                        <label for="price">Цена:</label>
+                        <input type="text" id="price" name="price" value="<%= product.price %>">
+                        <button type="submit">Изменить</button>
+                    </form>
+                    <form action="/admin/products/delete/<%= product.id %>" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">Удалить</button>
+                    </form>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+
+    <a href="/admin" class="back-btn">Вернуться на главную страницу админ-панели</a>
+</body>
+</html>

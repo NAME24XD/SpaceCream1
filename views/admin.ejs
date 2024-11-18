@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-Панель</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #f9f6f6;
+            text-decoration: none;
+            padding: 14px 16px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea,
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-link {
+            display: inline-block;
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-link:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <% if (cornerLetter === 'A') { %>
+        <div style="position: fixed; top: 10px; right: 10px; font-size: 24px;">A</div>
+    <% } %>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Магазин</a></li>
+                <li><a href="/admin/products">Управление продуктами</a></li>
+                <li><a href="/admin/orders">Управление заказами</a></li>
+                <li><a href="/admin/users">Управление пользователями</a></li>
+                <li><a href="/logout">Выход</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Добро пожаловать в админ-панель!</h1>
+        <!-- Здесь можно добавить дополнительный контент для администратора -->
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 SpaceCream</p>
+            <p>Наша компания занимается продажей мороженого.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Telegram</a>
+                <a href="#" class="social-link">VKontakte</a>
+                <!-- Добавьте другие ссылки на социальные сети, если необходимо -->
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

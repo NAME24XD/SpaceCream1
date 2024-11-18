@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sing</title>
+    <link rel="stylesheet" href="css/absulut.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png">
+</head>
+<body>
+    
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="/register" method="POST">
+                <h1>Создание</h1>
+                <% if (locals.error) { %>
+                    <div class="error"><%= locals.error %></div>
+                <% } %>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-vk"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-yandex"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+               <span>или используйте свой адрес электронной почты для регистрации</span>
+               <% if (locals.error) { %>
+                <div style="color: red;"><%= locals.error %></div>
+            <% } %>
+               <input type="text" id="username" name="username" placeholder="Имя" required>
+               <input type="email" id="email" name="email" placeholder="Почта" required>
+               <input type="password" id="password" name="password" placeholder="Пароль" required>
+               <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+                <% if (locals.error) { %>
+                    <p style="color: red;"><%= locals.error %></p>
+                <% } %>
+                <form method="post" action="/login">
+                    <h1>Войти</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-vk"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-yandex"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                <span>или используйте пароли своей электронной почты</span>
+                <input type="text" id="username" name="username" placeholder="Логин" required>
+                <input type="password" id="password" name="password" placeholder="Пароль" required>
+                <!-- <label for="priority">Приоритет (1 - обычный, 2 - админ):</label> -->
+                <!-- <input type="number" id="priority" name="priority" min="1" max="2" value="1" required><br>  -->
+                <a href="#">Забыли свой пароль?</a>
+                <button type="submit">Войти</button>
+                </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Добро пожаловать!</h1>
+                    <p>Введите свои личные данные, чтобы использовать все функции сайта</p>
+                    <button class="hidden" id="login">Войти</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Привет!</h1>
+                    <p>Зарегистрируйтесь, указав свои личные данные, чтобы использовать все функции сайта</p>
+                    <button class="hidden" id="register">Зарегистрироваться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>

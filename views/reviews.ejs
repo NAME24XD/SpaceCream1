@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .review-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 15px;
+        }
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .review:last-child {
+            border-bottom: none;
+        }
+        .star {
+            font-size: 20px;
+            color: gold;
+        }
+        .star-empty {
+            color: lightgray;
+        }
+        form {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-top: 20px;
+        }
+        textarea { 
+            width: 100%;
+            height: 100px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+        input[type="number"] {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #5cb85c;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #4cae4c;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Отзывы для продукта <%= productId %></h1>
+
+    <div class="review-container">
+
+        <% if (reviews.length > 0) { %>
+            <% reviews.forEach(review => { %>
+                <div class="review">
+                    <p><strong>Пользователь:</strong> <%= review.username %></p>
+                    <p><strong>Дата:</strong> <%= review.formatted_date || 'Неизвестно' %></p>
+                    <p><strong>Рейтинг:</strong></p>
+                    <div>
+                        <% for (let i = 1; i <= 5; i++) { %>
+                            <span class="<%= i <= review.rating ? 'star' : 'star-empty' %>">★</span>
+                        <% } %>
+                    </div>
+                    <p><%= review.review_text %></p>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>Отзывов пока нет.</p>
+        <% } %>        
+    </div>
+    
+    <a href="/">Назад к продукту</a>
+
+    <h2>Добавить отзыв</h2>
+    <form action="/reviews" method="post">
+        <input type="hidden" name="product_id" value="<%= productId %>">
+        <textarea name="review_text" required placeholder="Ваш отзыв..."></textarea>
+        <label for="rating">Рейтинг (1-5):</label>
+        <input type="number" name="rating" min="1" max="5" required>
+        <button type="submit">Отправить отзыв</button>
+    </form>
+</body>
+</html>

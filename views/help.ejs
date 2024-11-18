@@ -1,0 +1,63 @@
+<!-- help.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справка</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            padding-top: 100px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            /* position: fixed; */
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+            color: #fff;
+        }
+
+        .yandex__form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png" alt="123">
+        <nav>
+            <ul>
+                <a href="/">Магазин</a>
+                <a href="/cart">Корзина</a>
+                <a href="/login">Авторизация</a>
+            </ul>
+        </nav>
+    </header>
+
+
+    <script src="https://forms.yandex.ru/_static/embed.js"></script>
+    <div class="yandex__form">
+        <iframe src="https://forms.yandex.ru/u/672900cdf47e731ef2c3ca18/?iframe=1" frameborder="0" name="ya-form-672900cdf47e731ef2c3ca18" width="650"></iframe>
+    </div>
+
+    <footer>
+        <p>Связаться с нами: spacecream@gmail.com</p>
+        <p>Следите за изменениями:</p><a href="#" class="social-link">Git-Репозиторий</a>
+    </footer>
+</body>
+</html>

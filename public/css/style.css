@@ -1,0 +1,224 @@
+body {
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 90px;
+}
+
+::selection {
+    background-color: #ffcc00; /* Цвет фона выделенного текста */
+    color: #000; /* Цвет текста выделенного текста */
+}
+
+header {
+    position: fixed; /* Закрепляет заголовок */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #6d00c1c0;
+    z-index: 1000; /* Обеспечивает, что заголовок будет поверх других элементов */
+    padding: 20px 0;
+    display: flex; /* Включаем Flexbox */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+}
+
+header img {
+    position: absolute; /* Логотип по прежнему будет абсолютным */
+    top: 10px;
+    left: 10px;
+    height: 50px;
+    width: auto;
+}
+
+nav {
+    margin: 0; /* Убирает отступы, если они есть */
+}
+
+nav ul {
+    display: flex; /* Используем Flexbox для меню */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    border: 1px solid #fff;
+    box-shadow: #ffffff 1px 2px 16px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0px 20px;
+    padding: 14px 16px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover{
+    color: #ccc;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+li h2 {
+    margin-top: 0;
+}
+
+/* .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+} */
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    justify-content: space-between; /* Разделяет элементы равномерно */
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Элементы списка переносятся на следующую строку */
+}
+
+.container li {
+    background: #fff;
+    padding: 10px; /* Уменьшил отступы для компактности */
+    margin: 10px; /* Уменьшил отступы между элементами */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px); /* Устанавливает ширину элемента, учитывая отступы */
+    box-sizing: border-box; /* Учитывает отступы и границы в ширине */
+}
+
+/* Уменьшение размера текста для заголовков */
+.container li h2 {
+    margin-top: 0;
+    font-size: 1.1em; /* Уменьшил размер заголовка */
+}
+
+.container img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+li:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+li a{
+    /* text-decoration: none;  */
+    color: #333;
+}
+
+
+form {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6600B6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.footer {
+    background-color: #6C00C1;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-link {
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #ccc;
+}
+
+.info__container{
+    height: 300px;
+    background-color: #555;
+}

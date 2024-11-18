@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceCream - Мороженое из Космоса</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f; /* Темный фон для контраста */
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Минимальная высота страницы */
+        }
+        header {
+            background: rgba(15, 15, 30, 0.8);
+            padding: 20px;
+            text-align: center;
+            position: fixed; /* Фиксированный заголовок */
+            width: 100%;
+            top: 0;
+            z-index: 10; /* Чтобы заголовок был выше остальных элементов */
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeIn 1s;
+            color: #e0aaff; /* Светло-фиолетовый */
+        }
+        nav {
+            margin: 20px 0;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #e0aaff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #e0aaff9d; /* Ярко-розовый при наведении */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 0; /* Отступ сверху для фиксированного заголовка */
+            padding: 20px;
+            display: none;
+            animation: fadeIn 0.5s;
+            position: relative; /* Для звезд */
+            z-index: 1; /* Чтобы текст был выше звезд */
+            flex: 1; /* Позволяет контейнеру занимать оставшееся пространство */
+        }
+        .ice-cream {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .ice-cream-item {
+            background: rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+            margin: 10px;
+            padding: 20px;
+            width: calc(30% - 20px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .ice-cream-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5);
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            filter: brightness(0.9);
+        }
+        .cart, .profile, .about {
+            display: none;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        footer {
+            background-color: rgba(15, 15, 30, 0.9);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px; /* Уменьшенный отступ */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .social-links {
+            margin-top: 10px;
+        }
+        footer .social-links a {
+            cursor: pointer;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        footer .social-links img {
+            width: 30px; /* Размер иконок социальных сетей */
+            height: 30px;
+            transition: transform 0.3s;
+        }
+        footer .social-links img:hover {
+            transform: scale(1.1); /* Эффект при наведении */
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 768px) {
+            .ice-cream-item {
+                width: calc(48% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .ice-cream-item {
+                width: 100%;
+            }
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            from {
+                opacity: 0.8;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        ::selection {
+        background-color: #ffcc00; /* Цвет фона выделенного текста */
+        color: #000; /* Цвет текста выделенного текста */
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        /* width: 100%; */
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #6600B6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+
+    .quantity-control {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+    .quantity-control button {
+        background-color: #e0aaff;
+        color: #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 40px; /* Ширина кнопок */
+    }
+
+    .quantity-control button:hover {
+        background-color: #d28ee2; /* Цвет при наведении */
+    }
+
+    .quantity-input {
+        width: 60%; /* Ширина поля ввода */
+        text-align: center;
+        margin: 0 5px; /* Отступы между кнопками */
+    }
+
+    #edit-form {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+    #editing-products{
+    border: 1px solid #fff;
+    box-shadow: #ffffff 1px 2px 16px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0px 20px;
+    padding: 14px 16px;
+    transition: background-color 0.3s ease;
+    }
+
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SpaceCream</h1>
+        <nav>
+            <ul>
+                <a href="#" onclick="showSection('catalog')">Каталог</a>
+                <a href="/cart">Корзина</a>
+                <% if (userPriority === 2) { %>
+                    <a href="/admin">Админ-Панель</a>
+                <% } %>
+
+                <% if (userPriority === 1  || userPriority === 2) { %>
+                    <a href="/logout"><%= userUsername %></a>
+                    <%} else {%>
+                        <a href="/login">Авторизация</a>
+                    <% } %>
+                
+
+                <% if (cornerLetter === 'A') { %>
+                    <div style="position: fixed; top: 10px; right: 10px; font-size: 24px; color: #fff;">A</div>
+                <% } %>
+                <a href="#" onclick="showSection('cart')">Корзина</a>
+                <a href="#" onclick="showSection('profile')">Профиль</a>
+                <a href="#" onclick="showSection('about')">О нас</a>
+            </ul>
+        </nav>
+    </header>
+    <!-- <div class="info__container"></div> -->
+    
+    <div class="container" id="catalog">
+        <h2>Наши Космические Вкусы</h2>
+        <% if (userPriority === 2) { %>
+            <a id="editing-products" href="/admin/products">Добавить/Удалить</a>
+        <% } %>
+        <div class="ice-cream">
+            <% products.forEach(product => { %>
+                <div class="ice-cream-item">
+                    <% if (product.image_url) { %>
+                        <img src="<%= product.image_url %>" alt="<%= product.name %>" />
+                    <% } %>
+                    <h3><%= product.name %></h3>
+                    <p><%= product.description %></p>
+                    <p>Цена: <%= product.price %> руб.</p>
+                    <form action="/cart" method="post">
+                        <input type="hidden" name="product_id" value="<%= product.id %>">
+                        <div class="quantity-control">
+                            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+                            <button type="button" class="decrease">−</button>
+                            <button type="button" class="increase">+</button>
+                        </div>
+                        <a href="/product/<%= product.id %>/reviews">Посмотреть отзывы</a>
+                        <button type="submit">Добавить в корзину</button>
+                    </form>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <div class="container cart" id="cart">
+        <h2>Ваша Космическая Корзина</h2>
+        <div id="cart-items"></div>
+        <p id="total-price">Итого: 0₽</p>
+        <button onclick="checkout()">Оформить заказ</button>
+    </div>
+    
+    <div class="container profile" id="profile">
+        <h2>Ваш Космический Профиль</h2>
+        <p>Имя: <span id="user-name"><%= userUsername || 'Пользователь' %></span></p>
+        <button onclick="showEditForm()">Изменить профиль</button>
+
+        <div id="edit-form" style="display: none;">
+            <input type="text" id="new-name" placeholder="Введите новое имя" />
+            <button onclick="updateProfile()">Сохранить</button>
+            <button onclick="hideEditForm()">Отмена</button>
+        </div>
+    </div>
+    
+    <div class="container about" id="about">
+        <h2>О Нас</h2>
+        <p>Мы - команда, которая создает лучшее мороженое во Вселенной, используя только натуральные ингредиенты. Присоединяйтесь к нам в этом сладком космическом путешествии!</p>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 SpaceCream | Все права защищены</p>
+        <div class="social-links">
+            <h3>Мы в соц сетях:</h3>
+            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1024px-Telegram_logo.svg.png" alt="Telegram"></a>
+            <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/1200px-VK.com-logo.svg.png" alt="VK"></a>
+        </div>
+    </footer>
+    
+    <script>
+    document.querySelectorAll('.quantity-control').forEach(control => {
+        const decreaseButton = control.querySelector('.decrease');
+        const increaseButton = control.querySelector('.increase');
+        const quantityInput = control.querySelector('.quantity-input');
+
+        decreaseButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    });
+
+        let cart = [];
+        let total = 0;
+    
+        function showSection(section) {
+            document.querySelectorAll('.container').forEach((el) => {
+                el.style.display = 'none';
+            });
+            document.getElementById(section).style.display = 'block';
+            document.getElementById(section).style.animation = 'fadeIn 0.5s';
+        }
+    
+        function addToCart(item, price) {
+            cart.push({item, price});
+            total += price;
+            updateCart();
+        }
+    
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+    
+            cart.forEach(cartItem => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `${cartItem.item} - ${cartItem.price}₽`;
+                cartItemsContainer.appendChild(div);
+            });
+    
+            document.getElementById('total-price').innerText = `Итого: ${total}₽`;
+        }
+    
+        function showEditForm() {
+    document.getElementById('edit-form').style.display = 'block'; // Показываем форму редактирования
+}
+
+function hideEditForm() {
+    document.getElementById('edit-form').style.display = 'none'; // Скрываем форму редактирования
+}
+
+function updateProfile() {
+    const newName = document.getElementById('new-name').value; // Получаем новое имя из поля ввода
+    if (newName) {
+        // Обновляем имя на странице
+        document.getElementById('user-name').innerText = newName;
+
+        // Отправляем AJAX-запрос для обновления в базе данных
+        fetch('/update-profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId: userId, newName: newName }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка при обновлении профиля');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Профиль обновлён:', data);
+            hideEditForm(); // Скрываем форму после успешного обновления
+        })
+        .catch((error) => {
+            console.error('Ошибка:', error);
+        });
+    } else {
+        alert('Имя не может быть пустым!'); // Сообщение об ошибке
+    }
+}
+    
+        // Показать каталог по умолчанию
+        showSection('catalog');
+    
+        // Функция для создания звезд
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 2; // Размер звезды
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(star);
+    
+            // Анимация мигания
+            star.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
+            star.style.opacity = Math.random();
+    
+            // Удаление звезды после анимации
+            setTimeout(() => {
+                star.remove();
+            }, 1500);
+        }
+    
+        // Создание звезд через каждые 200 мс
+        setInterval(createStar, 100);
+    </script>
+</body>
+</html>

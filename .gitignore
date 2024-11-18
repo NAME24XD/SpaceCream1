@@ -1,0 +1,9 @@
+# Игнорировать все файлы с расширением .log
+*.log
+
+# Игнорировать папку node_modules
+node_modules/
+
+# Игнорировать файлы настроек IDE
+.idea/
+*.sublime-workspace

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://mystickermania.com/cdn/stickers/noob-pack/galaxy-ice-cream-512x512.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .order-info {
+            margin-bottom: 10px;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Orders</h1>
+
+    <ul>
+        <% orders.forEach(order => { %>
+            <li>
+                <div class="order-info">
+                    <strong>Order ID:</strong> <%= order.id %><br>
+                    <strong>User ID:</strong> <%= order.user_id %><br>
+                    <strong>Order Date:</strong> <%= order.order_date %><br>
+                    <strong>Name:</strong> <%= order.name %><br>
+                    <strong>Address:</strong> <%= order.address %><br>
+                </div>
+                <h2>Order Items</h2>
+                <% if (order.items && order.items.length > 0) { %>
+                    <ul class="order-items">
+                        <% order.items.forEach(item => { %>
+                            <li>
+                                <strong>Product Name:</strong> <%= item.name %><br>
+                                <strong>Quantity:</strong> <%= item.quantity %><br>
+                                <strong>Price per Unit:</strong> $<%= item.price %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p>No items found for this order.</p>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+
+    <a href="/admin" class="back-btn">Back to Admin Panel</a>
+</body>
+</html>
